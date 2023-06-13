@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package grpc_user_domain;
+option go_package="./grpc_user_domain";
+
+import public "google/protobuf/timestamp.proto";
+import public "github.com/wuyazi/gddd/event_message/event_message.proto";
+
+message UserCreated {
+  event_message.AbstractEvent abs = 1;
+  string nickname = 2;
+  google.protobuf.Timestamp create_time = 3;
+}
+
+message UserChangedNickname {
+  event_message.AbstractEvent abs = 1;
+  string nickname = 2;
+}
+
+message UserChangedAge {
+  event_message.AbstractEvent abs = 1;
+  int64 age = 2;
+}
+
+message UserChangedGender {
+  event_message.AbstractEvent abs = 1;
+  string gender = 2;
+}
