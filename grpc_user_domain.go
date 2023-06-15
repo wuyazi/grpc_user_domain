@@ -4,10 +4,10 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/wuyazi/grpc_user_domain/grpc_user_domain"
 	"github.com/wuyazi/grpc_user_domain/internal/config"
 	"github.com/wuyazi/grpc_user_domain/internal/server"
 	"github.com/wuyazi/grpc_user_domain/internal/svc"
+	"github.com/wuyazi/grpc_user_domain/user_domain"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"
@@ -16,7 +16,7 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-var configFile = flag.String("f", "etc/conf.yaml", "the config file")
+var configFile = flag.String("f", "etc/grpc_user_domain.yaml", "the config file")
 
 func main() {
 	flag.Parse()
@@ -24,10 +24,9 @@ func main() {
 	var c config.Config
 	conf.MustLoad(*configFile, &c)
 	ctx := svc.NewServiceContext(c)
-	svr := server.NewGrpcUserDomainServer(ctx)
 
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {
-		grpc_user_domain.RegisterUserCommendServer(grpcServer, svr)
+		user_domain.RegisterUserCommendServer(grpcServer, server.NewUserCommendServer(ctx))
 
 		if c.Mode == service.DevMode || c.Mode == service.TestMode {
 			reflection.Register(grpcServer)

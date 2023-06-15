@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.12
-// source: command.proto
+// source: grpc_user_domain.proto
 
-package grpc_user_domain
+package user_domain
 
 import (
 	context "context"
@@ -38,7 +38,7 @@ func NewUserCommendClient(cc grpc.ClientConnInterface) UserCommendClient {
 
 func (c *userCommendClient) Create(ctx context.Context, in *CreateReq, opts ...grpc.CallOption) (*UserIdResp, error) {
 	out := new(UserIdResp)
-	err := c.cc.Invoke(ctx, "/grpc_user_domain.userCommend/create", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user_domain.userCommend/create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (c *userCommendClient) Create(ctx context.Context, in *CreateReq, opts ...g
 
 func (c *userCommendClient) UpdateNickname(ctx context.Context, in *UpdateNicknameReq, opts ...grpc.CallOption) (*UserIdResp, error) {
 	out := new(UserIdResp)
-	err := c.cc.Invoke(ctx, "/grpc_user_domain.userCommend/updateNickname", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user_domain.userCommend/updateNickname", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (c *userCommendClient) UpdateNickname(ctx context.Context, in *UpdateNickna
 
 func (c *userCommendClient) UpdateAge(ctx context.Context, in *UpdateAgeReq, opts ...grpc.CallOption) (*UserIdResp, error) {
 	out := new(UserIdResp)
-	err := c.cc.Invoke(ctx, "/grpc_user_domain.userCommend/updateAge", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user_domain.userCommend/updateAge", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func (c *userCommendClient) UpdateAge(ctx context.Context, in *UpdateAgeReq, opt
 
 func (c *userCommendClient) UpdateGender(ctx context.Context, in *UpdateGenderReq, opts ...grpc.CallOption) (*UserIdResp, error) {
 	out := new(UserIdResp)
-	err := c.cc.Invoke(ctx, "/grpc_user_domain.userCommend/updateGender", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user_domain.userCommend/updateGender", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -122,7 +122,7 @@ func _UserCommend_Create_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/grpc_user_domain.userCommend/create",
+		FullMethod: "/user_domain.userCommend/create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserCommendServer).Create(ctx, req.(*CreateReq))
@@ -140,7 +140,7 @@ func _UserCommend_UpdateNickname_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/grpc_user_domain.userCommend/updateNickname",
+		FullMethod: "/user_domain.userCommend/updateNickname",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserCommendServer).UpdateNickname(ctx, req.(*UpdateNicknameReq))
@@ -158,7 +158,7 @@ func _UserCommend_UpdateAge_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/grpc_user_domain.userCommend/updateAge",
+		FullMethod: "/user_domain.userCommend/updateAge",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserCommendServer).UpdateAge(ctx, req.(*UpdateAgeReq))
@@ -176,7 +176,7 @@ func _UserCommend_UpdateGender_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/grpc_user_domain.userCommend/updateGender",
+		FullMethod: "/user_domain.userCommend/updateGender",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserCommendServer).UpdateGender(ctx, req.(*UpdateGenderReq))
@@ -188,7 +188,7 @@ func _UserCommend_UpdateGender_Handler(srv interface{}, ctx context.Context, dec
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var UserCommend_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "grpc_user_domain.userCommend",
+	ServiceName: "user_domain.userCommend",
 	HandlerType: (*UserCommendServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -209,5 +209,5 @@ var UserCommend_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "command.proto",
+	Metadata: "grpc_user_domain.proto",
 }

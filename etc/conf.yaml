@@ -1,8 +1,0 @@
-Name: grpc-user-domain
-ListenOn: 127.0.0.1:8010
-DtmServers:
-  - 127.0.0.1:36790
-#Etcd:
-#  Hosts:
-#  - 127.0.0.1:2379
-#  Key: grpcuserdomain.rpc

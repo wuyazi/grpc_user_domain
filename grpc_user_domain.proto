@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package grpc_user_domain;
-option go_package="./grpc_user_domain";
+package user_domain;
+option go_package = "github.com/wuyazi/grpc_user_domain/user_domain";
 
 message createReq {
     string nickname = 1;
